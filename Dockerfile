@@ -15,13 +15,14 @@ RUN groupadd -r hollicube && useradd -m -r -g hollicube hollicube
 
 # 创建文件夹
 RUN mkdir -p $HOLLICUBE_HOME/app
-COPY . $HOLLICUBE_HOME/app
+COPY packages/node_modules/node-red $HOLLICUBE_HOME/app/node-red
+COPY packages/node_modules/node-red-contrib-mysql-storage-plugin-master $HOLLICUBE_HOME/app/node-red-contrib-mysql-storage-plugin-master
 
 #给hollicube用户授权
 RUN chown -R hollicube:hollicube $HOLLICUBE_HOME $HOLLICUBE_HOME/app
 
 USER hollicube
-WORKDIR $HOLLICUBE_HOME/app
+WORKDIR $HOLLICUBE_HOME/app/node-red
 
 #运行
 CMD npm run release

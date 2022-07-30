@@ -18,6 +18,17 @@ started.
 2. `node-red`
 3. Open <http://localhost:1880>
 
+## Docker Start
+
+```
+docker run  -d -p 1880:1880 \
+-e mysql_url=172.17.0.2 \
+-e mysql_port=3306 \
+-e mysql_data_base=node_red \
+-e mysql_user=root \
+-e mysql_pass=123456 \
+mytest2:1.1
+```
 ## Getting Help
 
 More documentation can be found [here](http://nodered.org/docs).
